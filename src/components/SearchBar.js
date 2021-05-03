@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "rgba(62, 38, 42, 0.24)",
     borderRadius: 4,
+    marginBottom: 10,
   },
   input: {
     fontFamily: "Roboto",

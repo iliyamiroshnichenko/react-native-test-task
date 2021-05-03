@@ -1,11 +1,15 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 
-export const UserInfo = ({ user: { name, email } }) => {
+export const UserInfo = ({ user: { name, email, id } }) => {
   const firstLetters = name
     .split(" ")
     .map((item) => item[0])
     .join("");
+
+  const pressHandler = (id) => {
+    console.log(id);
+  };
 
   return (
     <View style={styles.container}>
@@ -16,7 +20,11 @@ export const UserInfo = ({ user: { name, email } }) => {
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.email}>{email}</Text>
       </View>
-      <Text style={styles.posts}>10 posts</Text>
+      <View style={styles.postsContainer}>
+        <TouchableOpacity onPress={() => pressHandler(id)}>
+          <Text style={styles.posts}>10 posts</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -58,11 +66,13 @@ const styles = StyleSheet.create({
     letterSpacing: 0.4,
     opacity: 0.54,
   },
+  postsContainer: {
+    marginLeft: "auto",
+  },
   posts: {
     fontFamily: "Roboto",
     fontSize: 16,
     lineHeight: 24,
     letterSpacing: 0.44,
-    marginLeft: "auto",
   },
 });

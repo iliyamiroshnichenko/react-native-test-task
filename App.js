@@ -1,5 +1,7 @@
+// import "react-native-gesture-handler";
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
+// import { NavigationContainer } from "@react-navigation/native";
+import { StyleSheet, View, FlatList, Alert } from "react-native";
 import apiService from "./src/services/api-service";
 import { SearchBar } from "./src/components/SearchBar";
 import { UserInfo } from "./src/components/userInfo";
@@ -10,6 +12,7 @@ export default function App() {
 
   useEffect(() => {
     apiService.fetchUsers().then((data) => setUsers(data));
+    // apiService.fetchUserPosts().then((data) => console.log(data));
   }, []);
 
   const search = (value) => {
@@ -24,14 +27,22 @@ export default function App() {
   );
 
   return (
+    // <NavigationContainer>
     <View style={styles.container}>
       <SearchBar search={search}></SearchBar>
-      <FlatList
-        keyExtractor={({ id }) => id.toString()}
-        data={filteredUsers}
-        renderItem={({ item }) => <UserInfo user={item}></UserInfo>}
-      />
+      {filteredUsers.length > 0 ? (
+        <FlatList
+          keyExtractor={({ id }) => id.toString()}
+          data={filteredUsers}
+          renderItem={({ item }) => <UserInfo user={item}></UserInfo>}
+        />
+      ) : (
+        Alert.alert("Oops!", "No results for your query!", [
+          { text: "Try again" },
+        ])
+      )}
     </View>
+    // </NavigationContainer>
   );
 }
 

@@ -4,10 +4,10 @@ const fetchUsers = () => {
   );
 };
 
-// const fetchUsersPosts = (userId) => {
-//   return fetch(
-//     `https://jsonplaceholder.typicode.com/users/${userId}/posts`
-//   ).then((response) => response.json());
-// };
+const fetchUserPosts = (userId = 1) => {
+  return fetch(
+    `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
+  ).then((response) => response.json());
+};
 
-export default { fetchUsers };
+export default { fetchUsers, fetchUserPosts };
