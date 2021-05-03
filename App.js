@@ -1,12 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View, FlatList } from "react-native";
+import apiService from "./src/services/api-service";
+import { UserInfo } from "./src/components/userInfo";
 
 export default function App() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    apiService.fetchUsers().then((data) => setUsers(data));
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <FlatList
+        keyExtractor={({ id }) => id.toString()}
+        data={users}
+        renderItem={({ item }) => <UserInfo user={item}></UserInfo>}
+      />
     </View>
   );
 }
@@ -14,8 +24,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
