@@ -4,7 +4,7 @@ The application contains 2 screens: Authors screen. It shows a list of authors. 
 
 # Authors's Screen
 
-![](screenshots/authors.jpg)
+<img src='screenshots/authors.jpg' width="360">
 
 # Authors's Screen (searching by name and email)
 
