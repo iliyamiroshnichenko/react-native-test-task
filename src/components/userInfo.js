@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 
 export const UserInfo = ({ user: { name, email, id } }) => {
   const firstLetters = name
@@ -12,20 +13,21 @@ export const UserInfo = ({ user: { name, email, id } }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.firstLettersContainer}>
-        <Text style={styles.firstLetters}>{firstLetters}</Text>
-      </View>
-      <View>
-        <Text style={styles.name}>{name}</Text>
-        <Text style={styles.email}>{email}</Text>
-      </View>
-      <View style={styles.postsContainer}>
-        <TouchableOpacity onPress={() => pressHandler(id)}>
+    <TouchableOpacity onPress={() => pressHandler(id)}>
+      <View style={styles.container}>
+        <View style={styles.firstLettersContainer}>
+          <Text style={styles.firstLetters}>{firstLetters}</Text>
+        </View>
+        <View>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.email}>{email}</Text>
+        </View>
+        <View style={styles.postsContainer}>
           <Text style={styles.posts}>10 posts</Text>
-        </TouchableOpacity>
+          <AntDesign name="right" size={12} color="black" />
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -46,21 +48,21 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   firstLetters: {
-    fontFamily: "Roboto",
+    fontFamily: "roboto-medium",
     fontWeight: "500",
     fontSize: 14,
     lineHeight: 24,
     letterSpacing: 0.1,
   },
   name: {
-    fontFamily: "Roboto",
+    fontFamily: "roboto-regular",
     fontSize: 16,
     lineHeight: 24,
     letterSpacing: 0.44,
     marginBottom: 2,
   },
   email: {
-    fontFamily: "Roboto",
+    fontFamily: "roboto-regular",
     fontSize: 12,
     lineHeight: 16,
     letterSpacing: 0.4,
@@ -68,11 +70,14 @@ const styles = StyleSheet.create({
   },
   postsContainer: {
     marginLeft: "auto",
+    flexDirection: "row",
+    alignItems: "center",
   },
   posts: {
-    fontFamily: "Roboto",
+    fontFamily: "roboto-regular",
     fontSize: 16,
     lineHeight: 24,
     letterSpacing: 0.44,
+    marginRight: 12,
   },
 });

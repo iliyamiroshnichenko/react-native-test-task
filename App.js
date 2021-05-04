@@ -1,7 +1,8 @@
 // import "react-native-gesture-handler";
 import React, { useState, useEffect } from "react";
 // import { NavigationContainer } from "@react-navigation/native";
-import { StyleSheet, View, FlatList, Alert } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
+import { useFonts } from "expo-font";
 import apiService from "./src/services/api-service";
 import { SearchBar } from "./src/components/SearchBar";
 import { UserInfo } from "./src/components/userInfo";
@@ -10,9 +11,13 @@ export default function App() {
   const [users, setUsers] = useState([]);
   const [query, setQuery] = useState("");
 
+  const [loaded] = useFonts({
+    "roboto-regular": require("./assets/fonts/Roboto-Regular.ttf"),
+    "roboto-medium": require("./assets/fonts/Roboto-Medium.ttf"),
+  });
+
   useEffect(() => {
     apiService.fetchUsers().then((data) => setUsers(data));
-    // apiService.fetchUserPosts().then((data) => console.log(data));
   }, []);
 
   const search = (value) => {
@@ -26,21 +31,18 @@ export default function App() {
       email.toLowerCase().includes(normalizedQuery)
   );
 
+  if (!loaded) {
+    return null;
+  }
   return (
     // <NavigationContainer>
     <View style={styles.container}>
       <SearchBar search={search}></SearchBar>
-      {filteredUsers.length > 0 ? (
-        <FlatList
-          keyExtractor={({ id }) => id.toString()}
-          data={filteredUsers}
-          renderItem={({ item }) => <UserInfo user={item}></UserInfo>}
-        />
-      ) : (
-        Alert.alert("Oops!", "No results for your query!", [
-          { text: "Try again" },
-        ])
-      )}
+      <FlatList
+        keyExtractor={({ id }) => id.toString()}
+        data={filteredUsers}
+        renderItem={({ item }) => <UserInfo user={item}></UserInfo>}
+      />
     </View>
     // </NavigationContainer>
   );

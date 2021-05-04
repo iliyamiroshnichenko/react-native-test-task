@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { TextInput, View, StyleSheet, TouchableOpacity } from "react-native";
+import { EvilIcons } from "@expo/vector-icons";
 
 export const SearchBar = ({ search }) => {
   const [value, setValue] = useState("");
@@ -9,6 +10,7 @@ export const SearchBar = ({ search }) => {
 
   return (
     <View style={styles.searchBar}>
+      <EvilIcons name="search" size={24} color="grey" />
       <TextInput
         style={styles.input}
         value={value}
@@ -26,9 +28,11 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(62, 38, 42, 0.24)",
     borderRadius: 4,
     marginBottom: 10,
+    flexDirection: "row",
+    alignItems: "center",
   },
   input: {
-    fontFamily: "Roboto",
+    fontFamily: "roboto-regular",
     fontSize: 16,
     lineHeight: 24,
     letterSpacing: 0.44,
