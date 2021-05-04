@@ -32,6 +32,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   input: {
+    width: "100%",
+    marginLeft: 10,
     fontFamily: "roboto-regular",
     fontSize: 16,
     lineHeight: 24,

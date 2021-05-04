@@ -2,18 +2,18 @@ import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
-export const UserInfo = ({ user: { name, email, id } }) => {
+export const UserInfo = ({ navigation, user: { name, email, id } }) => {
   const firstLetters = name
     .split(" ")
     .map((item) => item[0])
     .join("");
 
-  const pressHandler = (id) => {
-    console.log(id);
+  const pressHandler = () => {
+    navigation.navigate(`Posts`, { id, name });
   };
 
   return (
-    <TouchableOpacity onPress={() => pressHandler(id)}>
+    <TouchableOpacity onPress={pressHandler}>
       <View style={styles.container}>
         <View style={styles.firstLettersContainer}>
           <Text style={styles.firstLetters}>{firstLetters}</Text>
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
-    marginTop: 30,
+    paddingVertical: 14,
   },
   firstLettersContainer: {
     marginRight: 16,
@@ -78,6 +78,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     letterSpacing: 0.44,
-    marginRight: 12,
+    marginRight: 8,
   },
 });

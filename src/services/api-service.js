@@ -4,7 +4,7 @@ const fetchUsers = () => {
   );
 };
 
-const fetchUserPosts = (userId = 1) => {
+const fetchUserPosts = (userId) => {
   return fetch(
     `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
   ).then((response) => response.json());
