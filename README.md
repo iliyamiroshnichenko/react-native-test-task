@@ -8,12 +8,12 @@ The application contains 2 screens: Authors screen. It shows a list of authors. 
 
 # Authors's Screen (searching by name and email)
 
-![](screenshots/authors-search.jpg)
+<img src='screenshots/authors-search.jpg' width="360">
+
+# Posts's Screen
+
+<img src='screenshots/posts.jpg' width="360">
 
 # Posts's Screen (searching by title and post content)
 
-![](screenshots/posts.jpg)
-
-# Authors's Screen (searching by name and email)
-
-![](screenshots/posts-search.jpg)
+<img src='screenshots/posts-search.jpg' width="360">
