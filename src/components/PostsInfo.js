@@ -16,9 +16,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     marginTop: 10,
     marginBottom: 14,
+    elevation: 3,
     shadowRadius: 4,
     shadowColor: "rgba(0, 0, 0, 0.25)",
-    shadowOffset: { width: 1, height: 4 },
+    shadowOffset: { width: 0, height: 4 },
   },
   title: {
     fontFamily: "roboto-regular",

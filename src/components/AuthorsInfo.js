@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
-export const UserInfo = ({ navigation, user: { name, email, id } }) => {
+export const AuthorsInfo = ({ navigation, user: { name, email, id } }) => {
   const firstLetters = name
     .split(" ")
     .map((item) => item[0])

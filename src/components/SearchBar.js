@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { TextInput, View, StyleSheet, TouchableOpacity } from "react-native";
+import { TextInput, View, StyleSheet } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
 
 export const SearchBar = ({ search }) => {
   const [value, setValue] = useState("");
+
   useEffect(() => {
     search(value);
   }, [value]);

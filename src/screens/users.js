@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import apiService from "../services/api-service";
 import { SearchBar } from "../../src//components/SearchBar";
-import { UserInfo } from "../../src/components/userInfo";
+import { AuthorsInfo } from "../components/AuthorsInfo";
 
 export const UsersScreen = ({ navigation }) => {
   const [users, setUsers] = useState([]);
@@ -28,7 +28,7 @@ export const UsersScreen = ({ navigation }) => {
         keyExtractor={({ id }) => id.toString()}
         data={filteredUsers}
         renderItem={({ item }) => (
-          <UserInfo navigation={navigation} user={item}></UserInfo>
+          <AuthorsInfo navigation={navigation} user={item}></AuthorsInfo>
         )}
       />
     </View>
